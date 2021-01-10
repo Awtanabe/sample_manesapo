@@ -26,9 +26,10 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
+    @product.user_products.new(user_id: current_user.id)
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new }
@@ -69,6 +70,6 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:name, product_nutrients_attributes: [:id, :nutrient_id, :value, :_destroy]).merge(user_id: current_user.id)
+      params.require(:product).permit(:name,:calorie,product_nutrients_attributes: [:id, :nutrient_id, :value, :_destroy]).merge(user_id: current_user.id)
     end
 end

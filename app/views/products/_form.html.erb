@@ -17,6 +17,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :calorie %>
+    <%= form.text_field :calorie %>
+  </div>
+
+  <div class="field">
     <% Nutrient.all.each do |nutrient|%>
       <%= form.fields_for :product_nutrients do |product_nutrient|%>
         <%= product_nutrient.label :"#{nutrient.name}" %>

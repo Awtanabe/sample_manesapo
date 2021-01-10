@@ -69,6 +69,6 @@ class UserIntakesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_intake_params
-      params.require(:user_intake).permit(:user_id, :product_id)
+      params.require(:user_intake).permit(:product_id).merge(user_id: current_user.id)
     end
 end

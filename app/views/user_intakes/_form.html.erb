@@ -11,15 +11,13 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
 
   <div class="field">
     <%= form.label :product_id %>
-    <%= form.text_field :product_id %>
+    <%= form.collection_select(:product_id, current_user.products, :id, :name) %>
   </div>
+
+  <%=link_to "商品登録", new_product_path%>
 
   <div class="actions">
     <%= form.submit %>
