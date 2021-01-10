@@ -33,12 +33,12 @@ ActiveRecord::Schema.define(version: 2021_01_10_173309) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "calorie"
+    t.integer "calorie", default: 0
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
   create_table "user_intake_infos", force: :cascade do |t|
-    t.integer "target_intake"
+    t.integer "target_intake", default: 2000
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"

@@ -28,7 +28,7 @@ class UserIntakesController < ApplicationController
 
     respond_to do |format|
       if @user_intake.save
-        format.html { redirect_to @user_intake, notice: 'User intake was successfully created.' }
+        format.html { redirect_to root_path, notice: 'User intake was successfully created.' }
         format.json { render :show, status: :created, location: @user_intake }
       else
         format.html { render :new }
