@@ -16,6 +16,16 @@
     <%= form.text_field :name %>
   </div>
 
+  <div class="field">
+    <% Nutrient.all.each do |nutrient|%>
+      <%= form.fields_for :product_nutrients do |product_nutrient|%>
+        <%= product_nutrient.label :"#{nutrient.name}" %>
+        <%= product_nutrient.hidden_field :nutrient_id, value: nutrient.id %>
+        <%= product_nutrient.number_field :value%>g
+      <% end %>
+    <% end %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
