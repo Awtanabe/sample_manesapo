@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  target_intake: 1
+  nutrient: one
+
+two:
+  target_intake: 1
+  nutrient: two
