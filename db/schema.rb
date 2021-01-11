@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_10_173309) do
+ActiveRecord::Schema.define(version: 2021_01_10_171213) do
 
   create_table "nutrients", force: :cascade do |t|
     t.string "name"
@@ -50,8 +50,10 @@ ActiveRecord::Schema.define(version: 2021_01_10_173309) do
     t.integer "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_intake_info_id"
     t.index ["product_id"], name: "index_user_intakes_on_product_id"
     t.index ["user_id"], name: "index_user_intakes_on_user_id"
+    t.index ["user_intake_info_id"], name: "index_user_intakes_on_user_intake_info_id"
   end
 
   create_table "user_products", force: :cascade do |t|

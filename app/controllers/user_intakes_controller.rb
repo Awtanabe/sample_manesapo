@@ -25,7 +25,9 @@ class UserIntakesController < ApplicationController
   # POST /user_intakes.json
   def create
     @user_intake = UserIntake.new(user_intake_params)
-
+    user_intake_info = current_user.user_intake_info || UserIntakeInfo.create(user_id: current_user.id)
+    @user_intake.user_intake_info_id = user_intake_info.id
+    binding.pry 
     respond_to do |format|
       if @user_intake.save
         format.html { redirect_to root_path, notice: 'User intake was successfully created.' }
