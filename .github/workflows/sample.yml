@@ -1,0 +1,31 @@
+name: Sample
+on: [push]
+jobs:
+  setup_and_test_execution:
+    runs-on: ubuntu-latest
+    steps:
+    - users: actions/checkoout@v1
+    - name: Set up Ruby version
+      uses: actions/setup-ruby@master
+      with:
+        ruby-version: 2.4.0
+    - name: Install depent libralies
+      run: sudo apt-get install postgresql-client
+    
+    - name: Setup bundler
+      run: gem install bundler
+
+    - name: bundle install
+      run: |
+        bundle install --jobs 4 --retry 3
+
+    - name: Setup Database
+      run: |
+        cp config/database.yml.ci cconfig/database.yml
+        bundle exec rake db:create
+        bundle exec rake db:schema:load
+    - name: Run Rspec
+      run: bundle exec rspec
+      env:
+        RAILS_ENV: test
+           
