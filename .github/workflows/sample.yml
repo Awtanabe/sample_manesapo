@@ -8,7 +8,7 @@ jobs:
     - name: Set up Ruby version
       uses: actions/setup-ruby@master
       with:
-        ruby-version: 2.6.3
+        ruby-version: 2.6.x
     - name: Install depent libralies
       run: sudo apt-get install postgresql-client
     
